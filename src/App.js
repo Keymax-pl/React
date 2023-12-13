@@ -1,14 +1,15 @@
 import Hero from "./components/Hero/Hero";
 import SearchForm from "./components/SearchForm/SearchForm";
 import List from "./components/List/List";
+import Contrainer from "./components/Contrainer/Contrainer";
 
 const App = () => {
   return (
-    <div>
+    <Contrainer>
       <Hero />
       <SearchForm />
       <List />
-    </div>
+    </Contrainer>
   );
 };
 
