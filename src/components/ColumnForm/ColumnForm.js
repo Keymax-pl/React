@@ -8,15 +8,15 @@ const ColumnForm = props => {
     const [icon, setIcon] = useState('');
     const handleSubmit = e => {
         e.preventDefault();
-        props.action({ title: title });
+        props.action({ title: title, icon: icon });
         setTitle('');
         setIcon('');
-    }
+    };
 
 	return (
-        <form onSubmit={handleSubmit}>
-            <span>Title:</span> <TextInput type="text" value={title} onChange={e => setTitle(e.target.value)} />
-            <span>Icon:</span> <TextInput type="text" value={icon} onChange={e => setIcon(e.target.value)} />
+        <form className={styles.columnForm} onSubmit={handleSubmit}>
+            <span>Title:</span><TextInput type="text" value={title} onChange={e => setTitle(e.target.value)} />
+            <span>Icon:</span><TextInput type="text" value={icon} onChange={e => setIcon(e.target.value)} />
             <Button>Add column</Button>
         </form>
 	);
