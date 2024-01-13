@@ -1,6 +1,6 @@
-import Hero from "./components/Hero/Hero";
-import SearchForm from "./components/SearchForm/SearchForm";
-import List from "./components/List/List";
+import Home from "./Home/Home.js";
+import Favorite from "./components/Favorite/Favorite.js";
+import About from "./components/About/About.js";
 import Contrainer from "./components/Contrainer/Contrainer";
 import NavBar from "./components/NavBar/NavBar";
 
@@ -9,9 +9,9 @@ const App = () => {
     <main>
      <NavBar />
       <Contrainer>
-        <Hero />
-        <SearchForm />
-        <List />
+        <Home />
+        <About />
+        <Favorite />
       </Contrainer>
     </main>
   );
