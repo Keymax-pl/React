@@ -1,15 +1,20 @@
 import styles from './List.module.scss'
 import Column from '../Column/Column.js';
 import ColumnForm from '../ColumnForm/ColumnForm.js';
+import SearchForm from '../SearchForm/SearchForm.js';
 import { useSelector } from 'react-redux';
 import { getListById, getColumnsByList } from '../../redux/store';
+import { useParams } from 'react-router';
+import { Navigate } from 'react-router-dom';
 
 const List = () => {
 
-    const columns = useSelector(state => getColumnsByList(state, '1'));
-    const listData = useSelector((state) => getListById(state, '1'));
-    
+  const { listId } = useParams();
 
+  const listData = useSelector(state => getListById(state, listId))
+  const columns = useSelector(state => getColumnsByList(state, listId));
+    
+  if(!listData) return <Navigate to="/" />
 
     return (
         <div className={styles.list}>
@@ -17,6 +22,7 @@ const List = () => {
             <h2 className={styles.title}>{listData.title}</h2>
           </header>
           <p className={styles.description}>{listData.description}</p>
+          <SearchForm />
           <section className={styles.columns}>
             {columns.map(column =>
               <Column
@@ -24,7 +30,7 @@ const List = () => {
                 {...column}  />
             )}
           </section>
-          <ColumnForm />
+          <ColumnForm listId={listId}/>
         </div>
       );
     
